@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minell Restaurant</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #fffaf5;
+      color: #333;
+    }
+
+    /* HEADER */
+    header {
+      background-color: rgb(45, 97, 45);
+      padding: 15px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      color: white;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .logo img {
+      height: 45px;
+      width: 45px;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: gold;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1551218808-94e220e084d2') center/cover no-repeat;
+      height: 90vh;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 48px;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 5px #000;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 3px #000;
+    }
+
+    .btn {
+      background-color: rgb(45, 97, 45);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      text-decoration: none;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: gold;
+    }
+
+    section {
+      padding: 80px 50px;
+    }
+
+    /* FEATURES */
+    .features {
+      display: flex;
+      justify-content: space-around;
+      background: rgb(232, 255, 232);
+      flex-wrap: wrap;
+      text-align: center;
+    }
+
+    .feature {
+      max-width: 300px;
+      margin: 20px;
+    }
+
+    .feature h3 {
+      color: goldenrod;
+      margin-bottom: 10px;
+    }
+
+    /* MENU SECTION */
+    .menu {
+      text-align: center;
+    }
+
+    .menu h2 {
+      font-size: 32px;
+      color: green;
+      margin-bottom: 20px;
+    }
+
+    .menu-items {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .item {
+      background: rgb(250, 225, 79);
+      padding: 20px;
+      border-radius: 10px;
+      width: 250px;
+    }
+
+    .item h3, .item h4, .item h5 {
+      color: white;
+    }
+
+    .item span {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+
+    /* ABOUT SECTION */
+    .about {
+      background: rgb(232, 255, 232);
+      text-align: center;
+    }
+
+    .about h2 {
+      color: green;
+      margin-bottom: 20px;
+    }
+
+    .about p {
+      max-width: 700px;
+      margin: 10px auto;
+      line-height: 1.6;
+    }
+
+    /* CONTACT SECTION */
+    .contact {
+      text-align: center;
+    }
+
+    .contact h2 {
+      color: green;
+      margin-bottom: 15px;
+    }
+
+    .contact-info {
+      margin-bottom: 20px;
+    }
+
+    .contact-info p {
+      margin: 5px 0;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 60%;
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      background-color: green;
+      color: white;
+      padding: 15px;
+      margin-top: 30px;
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        background: green;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        display: none;
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+        cursor: pointer;
+        color: white;
+        font-size: 24px;
+      }
+
+      .features {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1 class="logo">
+      <img src="https://thumbs.dreamstime.com/b/initial-alphabet-m-chef-hat-spoon-fork-modern-vector-logo-cafe-restaurant-cooking-business-company-identity-296994953.jpg" alt="Minell Logo">
+      Minell
+    </h1>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav>
+      <ul id="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <h2>Welcome to Minell</h2>
+    <p>Delicious meals crafted with love and passion.</p>
+    <a href="#menu" class="btn">Explore Menu</a>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="feature">
+      <h3>Fresh Ingredients</h3>
+      <p>We use only the freshest and highest-quality ingredients.</p>
+    </div>
+    <div class="feature">
+      <h3>Cozy Ambience</h3>
+      <p>Enjoy your meal in a warm and comfortable atmosphere.</p>
+    </div>
+    <div class="feature">
+      <h3>Friendly Staff</h3>
+      <p>Our team is here to make your dining experience unforgettable.</p>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu" class="menu">
+    <h2>Our Menu</h2>
+    <div class="menu-items">
+      <div class="item">
+        <h3>Margherita Pizza</h3>
+        <p>Classic delight with mozzarella & fresh basil</p>
+        <span>₹299</span>
+      </div>
+      <div class="item">
+        <h3>Butter Paneer</h3>
+        <p>Rich and creamy gravy with tender Paneer pieces</p>
+        <span>₹399</span>
+      </div>
+      <div class="item">
+        <h3>Pasta Alfredo</h3>
+        <p>Creamy white sauce pasta with garlic flavor</p>
+        <span>₹349</span>
+      </div>
+      <div class="item">
+        <h4>Butter Garlic Naan</h4>
+        <p>Rich in garlic juicy bread</p>
+        <span>₹49</span>
+      </div>
+      <div class="item">
+        <h5>Minell Special Pizza</h5>
+        <p>Rich in cheese with extra toppings</p>
+        <span>₹349</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <h2>About Us</h2>
+    <p>At Minell, we believe food is more than just a meal — it's an experience. Our chefs blend traditional flavors with modern creativity to bring you dishes you'll love.</p>
+    <p>Founded in 2020, Minell has been serving foodies across the city with passion and perfection.</p>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <p>We’d love to hear from you! Visit us or drop a message.</p>
+
+    <div class="contact-info">
+      <p><strong>Address:</strong> 123 Food Street, Vadodara</p>
+      <p><strong>Phone:</strong> +91 98765 43210</p>
+      <p><strong>Email:</strong> contact@minell.com</p>
+    </div>
+
+    <form class="contact-form" onsubmit="return sendMessage()">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+
+    <form class="contact-form" id="bookingForm">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <input type="tel" id="phone" placeholder="Phone Number" required>
+      <input type="date" id="date" required>
+      <input type="time" id="time" required>
+      <input type="number" id="people" placeholder="Number of Guests" required>
+      <textarea id="message" placeholder="Special Requests" rows="4"></textarea>
+      <button type="submit" class="btn">Book Table</button>
+    </form>
+
+    <div id="confirmation" style="display:none; margin-top:20px; color:green; font-weight:bold;">
+      ✅ Your table has been booked successfully!
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 MINELL Restaurant. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('nav-links').classList.toggle('show');
+    }
+
+    function sendMessage() {
+      alert("Thank you! Your message has been sent successfully.");
+      return false; // prevent page refresh
+    }
+  </script>
+
+</body>
+</html>
